@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bingo</title>
+</head>
+<style type="text/css">
+  .main-container {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 430px;
+  }
+  .copyright-container {
+    padding: 20px 0;
+  }
+  h1 {
+    padding: 0;
+    margin: 0;
+  }
+  h2 {
+    padding: 0;
+    margin: 0;
+  }
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .column {
+    display: flex;
+    flex-direction: row;
+  }
+  .row {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border: 4px solid black;
+    margin: -4px;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+  }
+  .row:hover {
+    background-color: #d46058;
+  }
+  .row.selected {
+    background-color: #d46058;
+  }
+  .image-wrapper {
+    width: 60%;
+    margin: auto;
+    cursor: pointer;
+  }
+  .row img {
+    display: block;
+    width: 50px;
+    height: auto;
+    margin-top: -4px;
+    margin-left: -2px;
+  }
+  .button {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 4px;
+  }
+  .line-container {
+    margin-left: -2px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .line {
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 2px;
+  }
+  .bold-line {
+    border: 2px solid black;
+    border-radius: 4px;
+    margin-bottom: 2px;
+  }
+  .skull {
+    background-color: white;
+    padding: 5px;
+    position: absolute;
+    left: 43%;
+    top: -20px;
+    z-index: 100;
+  }
+</style>
+<body>
+<div class="main-container">
+  <div class="copyright-container">
+    <img width="120" src="img/copyright.png">
+  </div>
+  <h1>ИГРА ПРЕСТОЛОВ</h1>
+  <h2>СМЕРТЕЛЬНОЕ БИНГО</h2>
+  <div>
+
+  </div>
+  <div class="grid-container">
+
+    <div class="line-container">
+      <div class="line"></div>
+      <div class="bold-line"></div>
+      <div class="line"></div>
+      <div class="skull">
+        <img width="40" height="40" src="img/skull.png">
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="row selected">
+        <div class="image-wrapper">
+          <img src="img/avatar-1.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-2.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-3.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-4.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-5.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-6.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-7.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-8.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-9.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-10.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-11.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-12.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-13.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-14.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-15.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-16.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-17.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-18.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-19.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-20.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-21.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-22.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-23.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-24.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-25.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="line-container">
+      <div class="line"></div>
+      <div class="bold-line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+  <button class="button">ПОДЕЛИТЬСЯ</button>
+</div>
+</body>
+</html>
