@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bingo</title>
 </head>
 <style type="text/css">
@@ -43,9 +44,13 @@
     align-items: center;
     justify-content: center;
   }
-  .row:hover {
-    background-color: #d46058;
+
+  @media (hover: hover) {
+    .row:hover {
+      background-color: #d46058;
+    }
   }
+
   .row.selected {
     background-color: #d46058;
   }
