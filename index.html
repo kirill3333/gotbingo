@@ -6,6 +6,10 @@
   <title>GAME OF THRONES Bingo</title>
 </head>
 <style type="text/css">
+  @font-face { font-family: 'CeraRoundPro-Bold';  src: local('CeraRoundPro-Bold'), url('https://nomail.com.ua/files/woff/777bcfe6cbf73d808cde25e4e6ea6610.woff') format('woff'); }
+
+  @font-face { font-family: 'CeraRoundPro-Regular';  src: local('CeraRoundPro-Regular'), url('https://nomail.com.ua/files/woff/63376d49beebd7570166dbedcd9a5986.woff') format('woff'); }
+
   .main-container {
     display: -webkit-flex;
     display: flex;
@@ -19,10 +23,14 @@
   h1 {
     padding: 0;
     margin: 0;
+    font-family:'CeraRoundPro-Bold';
+    font-size: 44pt;
   }
   h2 {
-    padding: 0;
+    padding-top: 10px;
     margin: 0;
+    font-family:'CeraRoundPro-Bold';
+    font-size: 20pt;
   }
   .grid-container {
     display: flex;
@@ -60,6 +68,8 @@
     border-radius: 4px;
     background-color: #FFF2A7;
     color: black;
+    white-space: nowrap;
+    font-family:'CeraRoundPro-Regular';
   }
 
   @media (hover: hover) {
@@ -92,6 +102,7 @@
     outline: none;
     background-color: white;
     color: black;
+    font-family:'CeraRoundPro-Bold';
   }
   .button:active {
     border-width: 3px;
@@ -132,6 +143,7 @@
   .developer a {
     text-decoration: none;
     color: darkgrey;
+    font-family:'CeraRoundPro-Regular';
   }
 
   .developer a:hover {
@@ -141,6 +153,14 @@
   @media (min-width: 320px) and (max-width: 480px) {
     .main-container {
       min-width: 300px;
+    }
+
+    h1 {
+      font-size: 24pt;
+    }
+
+    h2 {
+      font-size: 16pt;
     }
 
     .row {
