@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bingo</title>
+  <title>GAME OF THRONES Bingo</title>
 </head>
 <style type="text/css">
   .main-container {
@@ -43,25 +43,41 @@
     border-radius: 4px;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .tooltip {
+    top: 25px;
+    left: 65px;
+    display: none;
+    position: absolute;
+    z-index: 100;
+    padding: 4px;
+    border-style: solid;
+    border-color: #FFF2A7;
+    border-width: 1px;
+    border-radius: 4px;
+    background-color: #FFF2A7;
+    color: black;
   }
 
   @media (hover: hover) {
-    .row:hover {
-      background-color: #d46058;
+    .row:hover .tooltip {
+      display: block;
     }
   }
 
   .row.selected {
-    background-color: #d46058;
+    background-color: #D16773;
   }
   .image-wrapper {
-    width: 60%;
+    width: 70%;
     margin: auto;
-    cursor: pointer;
   }
   .row img {
     display: block;
-    width: 50px;
+    width: 55px;
     height: auto;
     margin-top: -4px;
     margin-left: -2px;
@@ -74,6 +90,8 @@
     border-radius: 4px;
     cursor: pointer;
     outline: none;
+    background-color: white;
+    color: black;
   }
   .button:active {
     border-width: 3px;
@@ -105,6 +123,21 @@
     z-index: 100;
   }
 
+  .developer {
+    text-align: right;
+    width: 100%;
+    padding-top: 30px;
+  }
+
+  .developer a {
+    text-decoration: none;
+    color: darkgrey;
+  }
+
+  .developer a:hover {
+    color: dimgray;
+  }
+
   @media (min-width: 320px) and (max-width: 480px) {
     .main-container {
       min-width: 300px;
@@ -118,6 +151,10 @@
     .row img {
       width: 38px;
     }
+
+    .developer {
+      text-align: center;
+    }
   }
 </style>
 <body>
@@ -125,8 +162,8 @@
   <div class="copyright-container">
     <img width="120" src="img/copyright.png">
   </div>
-  <h1>ИГРА ПРЕСТОЛОВ</h1>
-  <h2>СМЕРТЕЛЬНОЕ БИНГО</h2>
+  <h1>GAME OF THRONES</h1>
+  <h2>DEATH BINGO</h2>
   <div>
 
   </div>
@@ -142,137 +179,162 @@
     </div>
 
     <div class="column">
-      <div class="row selected">
+      <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-1.png" alt="">
+          <img src="img/avatar-1.png" alt="Tormund Giantsbane">
+          <span class="tooltip">Tormund Giantsbane</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-2.png" alt="">
+          <img src="img/avatar-2.png" alt="Daenerys Targaryen">
+          <span class="tooltip">Daenerys Targaryen</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-3.png" alt="">
+          <img src="img/avatar-3.png" alt="Jon Snow">
+          <span class="tooltip">Jon Snow</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-4.png" alt="">
+          <img src="img/avatar-4.png" alt="Arya Stark">
+          <span class="tooltip">Arya Stark</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-5.png" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="column">
-      <div class="row">
-        <div class="image-wrapper">
-          <img src="img/avatar-6.png" alt="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-wrapper">
-          <img src="img/avatar-7.png" alt="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-wrapper">
-          <img src="img/avatar-8.png" alt="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-wrapper">
-          <img src="img/avatar-9.png" alt="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-wrapper">
-          <img src="img/avatar-10.png" alt="">
+          <img src="img/avatar-5.png" alt="Tyrion Lannister">
+          <span class="tooltip">Tyrion Lannister</span>
         </div>
       </div>
     </div>
     <div class="column">
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-11.png" alt="">
+          <img src="img/avatar-6.png" alt="Grey Worm">
+          <span class="tooltip">Grey Worm</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-12.png" alt="">
+          <img src="img/avatar-7.png" alt="Podrick Payne">
+          <span class="tooltip">Podrick Payne</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-13.png" alt="">
+          <img src="img/avatar-8.png" alt="Brienne of Tarth">
+          <span class="tooltip">Brienne of Tarth</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-14.png" alt="">
+          <img src="img/avatar-9.png" alt="Varys">
+          <span class="tooltip">Varys</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-15.png" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="column">
-      <div class="row">
-        <div class="image-wrapper">
-          <img src="img/avatar-16.png" alt="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-wrapper">
-          <img src="img/avatar-17.png" alt="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-wrapper">
-          <img src="img/avatar-18.png" alt="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-wrapper">
-          <img src="img/avatar-19.png" alt="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-wrapper">
-          <img src="img/avatar-20.png" alt="">
+          <img src="img/avatar-10.png" alt="Sandor 'The Hound' Clegane">
+          <span class="tooltip">Sandor "The Hound" Clegane</span>
         </div>
       </div>
     </div>
     <div class="column">
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-21.png" alt="">
+          <img src="img/avatar-11.png" alt="Davos Seaworth">
+          <span class="tooltip">Davos Seaworth</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-22.png" alt="">
+          <img src="img/avatar-12.png" alt="Sansa Stark">
+          <span class="tooltip">Sansa Stark</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-23.png" alt="">
+          <img src="img/avatar-13.png" alt="Bronn">
+          <span class="tooltip">Bronn</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-24.png" alt="">
+          <img src="img/avatar-14.png" alt="Samwell Tarly">
+          <span class="tooltip">Samwell Tarly</span>
         </div>
       </div>
       <div class="row">
         <div class="image-wrapper">
-          <img src="img/avatar-25.png" alt="">
+          <img src="img/avatar-15.png" alt="Jaime Lannister">
+          <span class="tooltip">Jaime Lannister</span>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-16.png" alt="Yara Greyjoy">
+          <span class="tooltip">Yara Greyjoy</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-17.png" alt="Bran Stark">
+          <span class="tooltip">Bran Stark</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-18.png" alt="Qyburn">
+          <span class="tooltip">Qyburn</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-19.png" alt="Drogon">
+          <span class="tooltip">Drogon</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-20.png" alt="Missandei">
+          <span class="tooltip">Missandei</span>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-21.png" alt="Gendry">
+          <span class="tooltip">Gendry</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-22.png" alt="Gregor 'Mountain' Clegane">
+          <span class="tooltip">Gregor "Mountain" Clegane</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-23.png" alt="Cersei Lannister">
+          <span class="tooltip">Cersei Lannister</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-24.png" alt="Euron Greyjoy">
+          <span class="tooltip">Euron Greyjoy</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="img/avatar-25.png" alt="Daario Naharis">
+          <span class="tooltip">Daario Naharis</span>
         </div>
       </div>
     </div>
@@ -285,5 +347,21 @@
   </div>
   <button class="button">SHARE</button>
 </div>
+<div class="developer">
+  <a href="http://kirillnovikov.ru/">developed by Kirill Novikov</a>
+</div>
 </body>
+<script>
+  const avatars = document.getElementsByClassName('row');
+  for (let i = 0; i < avatars.length; i++) {
+      avatars[i].addEventListener('click', function () {
+          const isSelected = this.classList.contains('selected');
+          if (isSelected) {
+              this.classList.remove('selected');
+          } else {
+              this.classList.add('selected');
+          }
+      })
+  }
+</script>
 </html>
