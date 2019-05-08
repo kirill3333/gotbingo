@@ -99,15 +99,6 @@
     }
   }
 
-  @keyframes toast-opacity {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-
   .toast {
     opacity: 0;
     display: none;
@@ -130,7 +121,7 @@
     opacity: 1;
     display: block;
     animation-name: toast;
-    animation-duration: 2s;
+    animation-duration: 0.8s;
   }
 
   @keyframes avatar {
@@ -281,6 +272,26 @@
 
     .developer {
       text-align: center;
+    }
+
+    @keyframes toast {
+      from {
+        top: 0px;
+        opacity: 0;
+      }
+      to {
+        top: 350px;
+        opacity: 1;
+      }
+    }
+
+    .toast {
+      top: 350px;
+    }
+
+    .toast.show {
+      animation-name: toast;
+      animation-duration: 0.8s;
     }
   }
 </style>
@@ -584,6 +595,8 @@
 
     new ClipboardJS('#shareButton', {
         text: function() {
+            const toast = document.getElementById('toast');
+
             const baseUrl = location.protocol + '//' + location.host + location.pathname;
             const elements = document.getElementsByClassName('row');
             let items = '';
@@ -592,8 +605,9 @@
                     items += i + ',';
                 }
             }
-            const toast = document.getElementById('toast');
+
             toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
             return baseUrl + '?items=' + items
         }
     });
