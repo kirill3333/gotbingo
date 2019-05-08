@@ -7,6 +7,7 @@
   <meta property="og:description" content="GAME OF THRONES Bingo game.">
   <meta property="og:image" content="https://kirill3333.github.io/gotbingo/img/got-preview.png">
   <title>GAME OF THRONES Bingo</title>
+  <script src="js/clipboard.min.js"></script>
 </head>
 <style type="text/css">
   @font-face {
@@ -90,13 +91,25 @@
   @keyframes toast {
     from {
       top: 0px;
+      opacity: 0;
     }
     to {
       top: 400px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes toast-opacity {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
     }
   }
 
   .toast {
+    opacity: 0;
     display: none;
     top: 400px;
     position: absolute;
@@ -114,6 +127,7 @@
   }
 
   .toast.show {
+    opacity: 1;
     display: block;
     animation-name: toast;
     animation-duration: 2s;
@@ -154,7 +168,7 @@
   }
 
   .row.selected {
-    background-color: #D16773;
+    background-color: #d66673;
   }
 
   .image-wrapper {
@@ -267,7 +281,7 @@
   }
 </style>
 <body>
-<div class="main-container">
+<div id="mainContainer" class="main-container">
   <div id="toast" class="toast">
     <span>Sharing URL copied to clipboard.</span>
     <img id="closeButton" class="close-button" src="img/close.png" alt="close toast">
@@ -530,26 +544,6 @@
         return obj;
     }
 
-    const copyToClipboard = str => {
-        const el = document.createElement('textarea');  // Create a <textarea> element
-        el.value = str;                                 // Set its value to the string that you want copied
-        el.setAttribute('readonly', '');                // Make it readonly to be tamper-proof
-        el.style.position = 'absolute';
-        el.style.left = '-9999px';                      // Move outside the screen to make it invisible
-        document.body.appendChild(el);                  // Append the <textarea> element to the HTML document
-        const selected =
-          document.getSelection().rangeCount > 0        // Check if there is any content selected previously
-            ? document.getSelection().getRangeAt(0)     // Store selection if found
-            : false;                                    // Mark as false to know no selection existed before
-        el.select();                                    // Select the <textarea> content
-        document.execCommand('copy');                   // Copy - only works as a result of a user action (e.g. click events)
-        document.body.removeChild(el);                  // Remove the <textarea> element
-        if (selected) {                                 // If a selection existed before copying
-            document.getSelection().removeAllRanges();    // Unselect everything on the HTML document
-            document.getSelection().addRange(selected);   // Restore the original selection
-        }
-    };
-
     const rawItems = getAllUrlParams().items || '';
     const items = rawItems.split(',');
 
@@ -576,25 +570,28 @@
             toast.classList.remove('show');
         })
     }
-    
-    const shareButton = document.getElementById('shareButton');
 
-    if (shareButton) {
-        const baseUrl = location.protocol + '//' + location.host + location.pathname;
-        const elements = document.getElementsByClassName('row');
-        shareButton.addEventListener('click', function () {
+    const mainContainer = document.getElementById('mainContainer');
+    mainContainer.addEventListener('click', function () {
+        const toast = document.getElementById('toast');
+        toast.classList.remove('show');
+    });
+
+    new ClipboardJS('#shareButton', {
+        text: function() {
+            const baseUrl = location.protocol + '//' + location.host + location.pathname;
+            const elements = document.getElementsByClassName('row');
             let items = '';
             for (let i = 0; i < elements.length; i++) {
                 if (elements[i].classList.contains('selected')) {
                     items += i + ',';
                 }
             }
-
-            copyToClipboard(baseUrl + '?items=' + items);
             const toast = document.getElementById('toast');
             toast.classList.add('show');
-        })
-    }
+            return baseUrl + '?items=' + items
+        }
+    });
 
 </script>
 </html>
