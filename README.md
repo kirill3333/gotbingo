@@ -1,1 +1,2 @@
-# gotbingo
+# Game of Thrones bingo game
+
