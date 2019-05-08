@@ -6,9 +6,15 @@
   <title>GAME OF THRONES Bingo</title>
 </head>
 <style type="text/css">
-  @font-face { font-family: 'CeraRoundPro-Bold';  src: local('CeraRoundPro-Bold'), url('https://nomail.com.ua/files/woff/777bcfe6cbf73d808cde25e4e6ea6610.woff') format('woff'); }
+  @font-face {
+    font-family: 'CeraRoundPro-Bold';
+    src: local('CeraRoundPro-Bold'), url('https://nomail.com.ua/files/woff/777bcfe6cbf73d808cde25e4e6ea6610.woff') format('woff');
+  }
 
-  @font-face { font-family: 'CeraRoundPro-Regular';  src: local('CeraRoundPro-Regular'), url('https://nomail.com.ua/files/woff/63376d49beebd7570166dbedcd9a5986.woff') format('woff'); }
+  @font-face {
+    font-family: 'CeraRoundPro-Regular';
+    src: local('CeraRoundPro-Regular'), url('https://nomail.com.ua/files/woff/63376d49beebd7570166dbedcd9a5986.woff') format('woff');
+  }
 
   .main-container {
     display: -webkit-flex;
@@ -17,30 +23,36 @@
     align-items: center;
     min-width: 430px;
   }
+
   .copyright-container {
     padding: 20px 0;
   }
+
   h1 {
     padding: 0;
     margin: 0;
-    font-family:'CeraRoundPro-Bold';
+    font-family: 'CeraRoundPro-Bold', sans-serif;
     font-size: 44pt;
   }
+
   h2 {
     padding-top: 10px;
     margin: 0;
-    font-family:'CeraRoundPro-Bold';
+    font-family: 'CeraRoundPro-Bold', sans-serif;
     font-size: 20pt;
   }
+
   .grid-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
   }
+
   .column {
     display: flex;
     flex-direction: row;
   }
+
   .row {
     display: flex;
     width: 80px;
@@ -69,22 +81,84 @@
     background-color: #FFF2A7;
     color: black;
     white-space: nowrap;
-    font-family:'CeraRoundPro-Regular';
+    font-family: 'CeraRoundPro-Regular', sans-serif;
+  }
+
+  @keyframes toast {
+    from {
+      top: 0px;
+    }
+    to {
+      top: 400px;
+    }
+  }
+
+  .toast {
+    display: none;
+    top: 400px;
+    position: absolute;
+    z-index: 200;
+    padding: 10px 30px;
+    border-style: solid;
+    border-color: #FFF2A7;
+    border-width: 1px;
+    border-radius: 4px;
+    background-color: #FFF2A7;
+    color: black;
+    white-space: nowrap;
+    font-family: 'CeraRoundPro-Regular', sans-serif;
+    font-weight: bold;
+  }
+
+  .toast.show {
+    display: block;
+    animation-name: toast;
+    animation-duration: 2s;
+  }
+
+  @keyframes avatar {
+    from {
+      width: 40px;
+    }
+    to {
+      width: 55px;
+    }
+  }
+
+  @keyframes avatar-wrapper {
+    from {
+      width: 60%;
+    }
+    to {
+      width: 70%;
+    }
   }
 
   @media (hover: hover) {
     .row:hover .tooltip {
       display: block;
     }
+
+    .row:hover img {
+      animation-name: avatar;
+      animation-duration: 1s;
+    }
+
+    .row:hover .image-wrapper {
+      animation-name: avatar-wrapper;
+      animation-duration: 1s;
+    }
   }
 
   .row.selected {
     background-color: #D16773;
   }
+
   .image-wrapper {
     width: 70%;
     margin: auto;
   }
+
   .row img {
     display: block;
     width: 55px;
@@ -92,6 +166,7 @@
     margin-top: -4px;
     margin-left: -2px;
   }
+
   .button {
     padding: 6px 30px;
     border-style: solid;
@@ -102,12 +177,14 @@
     outline: none;
     background-color: white;
     color: black;
-    font-family:'CeraRoundPro-Bold';
+    font-family: 'CeraRoundPro-Bold', sans-serif;
   }
+
   .button:active {
     border-width: 3px;
     margin-top: 2px;
   }
+
   .line-container {
     margin-left: -2px;
     width: 100%;
@@ -115,16 +192,19 @@
     margin-bottom: 30px;
     position: relative;
   }
+
   .line {
     border: 1px solid black;
     border-radius: 4px;
     margin-bottom: 2px;
   }
+
   .bold-line {
     border: 2px solid black;
     border-radius: 4px;
     margin-bottom: 2px;
   }
+
   .skull {
     background-color: white;
     padding: 5px;
@@ -143,11 +223,17 @@
   .developer a {
     text-decoration: none;
     color: darkgrey;
-    font-family:'CeraRoundPro-Regular';
+    font-family: 'CeraRoundPro-Regular', sans-serif;
   }
 
   .developer a:hover {
     color: dimgray;
+  }
+
+  .close-button {
+    vertical-align: bottom;
+    margin-left: 10px;
+    cursor: pointer;
   }
 
   @media (min-width: 320px) and (max-width: 480px) {
@@ -179,6 +265,10 @@
 </style>
 <body>
 <div class="main-container">
+  <div id="toast" class="toast">
+    <span>Sharing URL copied to clipboard.</span>
+    <img id="closeButton" class="close-button" src="img/close.png" alt="close toast">
+  </div>
   <div class="copyright-container">
     <img width="120" src="img/copyright.png">
   </div>
@@ -365,23 +455,143 @@
       <div class="line"></div>
     </div>
   </div>
-  <button class="button">SHARE</button>
+  <button id="shareButton" class="button">SHARE</button>
 </div>
 <div class="developer">
   <a href="http://kirillnovikov.ru/">developed by Kirill Novikov</a>
 </div>
 </body>
 <script>
-  const avatars = document.getElementsByClassName('row');
-  for (let i = 0; i < avatars.length; i++) {
-      avatars[i].addEventListener('click', function () {
-          const isSelected = this.classList.contains('selected');
-          if (isSelected) {
-              this.classList.remove('selected');
-          } else {
-              this.classList.add('selected');
-          }
-      })
-  }
+    function getAllUrlParams(url) {
+
+        // get query string from url (optional) or window
+        var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+
+        // we'll store the parameters here
+        var obj = {};
+
+        // if query string exists
+        if (queryString) {
+
+            // stuff after # is not part of query string, so get rid of it
+            queryString = queryString.split('#')[0];
+
+            // split our query string into its component parts
+            var arr = queryString.split('&');
+
+            for (var i = 0; i < arr.length; i++) {
+                // separate the keys and the values
+                var a = arr[i].split('=');
+
+                // set parameter name and value (use 'true' if empty)
+                var paramName = a[0];
+                var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+
+                // (optional) keep case consistent
+                paramName = paramName.toLowerCase();
+                if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
+
+                // if the paramName ends with square brackets, e.g. colors[] or colors[2]
+                if (paramName.match(/\[(\d+)?\]$/)) {
+
+                    // create key if it doesn't exist
+                    var key = paramName.replace(/\[(\d+)?\]/, '');
+                    if (!obj[key]) obj[key] = [];
+
+                    // if it's an indexed array e.g. colors[2]
+                    if (paramName.match(/\[\d+\]$/)) {
+                        // get the index value and add the entry at the appropriate position
+                        var index = /\[(\d+)\]/.exec(paramName)[1];
+                        obj[key][index] = paramValue;
+                    } else {
+                        // otherwise add the value to the end of the array
+                        obj[key].push(paramValue);
+                    }
+                } else {
+                    // we're dealing with a string
+                    if (!obj[paramName]) {
+                        // if it doesn't exist, create property
+                        obj[paramName] = paramValue;
+                    } else if (obj[paramName] && typeof obj[paramName] === 'string') {
+                        // if property does exist and it's a string, convert it to an array
+                        obj[paramName] = [obj[paramName]];
+                        obj[paramName].push(paramValue);
+                    } else {
+                        // otherwise add the property
+                        obj[paramName].push(paramValue);
+                    }
+                }
+            }
+        }
+
+        return obj;
+    }
+
+    const copyToClipboard = str => {
+        const el = document.createElement('textarea');  // Create a <textarea> element
+        el.value = str;                                 // Set its value to the string that you want copied
+        el.setAttribute('readonly', '');                // Make it readonly to be tamper-proof
+        el.style.position = 'absolute';
+        el.style.left = '-9999px';                      // Move outside the screen to make it invisible
+        document.body.appendChild(el);                  // Append the <textarea> element to the HTML document
+        const selected =
+          document.getSelection().rangeCount > 0        // Check if there is any content selected previously
+            ? document.getSelection().getRangeAt(0)     // Store selection if found
+            : false;                                    // Mark as false to know no selection existed before
+        el.select();                                    // Select the <textarea> content
+        document.execCommand('copy');                   // Copy - only works as a result of a user action (e.g. click events)
+        document.body.removeChild(el);                  // Remove the <textarea> element
+        if (selected) {                                 // If a selection existed before copying
+            document.getSelection().removeAllRanges();    // Unselect everything on the HTML document
+            document.getSelection().addRange(selected);   // Restore the original selection
+        }
+    };
+
+    const rawItems = getAllUrlParams().items || '';
+    const items = rawItems.split(',');
+
+    const avatars = document.getElementsByClassName('row');
+    for (let i = 0; i < avatars.length; i++) {
+        if (items.includes(i.toString())) {
+            avatars[i].classList.add('selected');
+        }
+        avatars[i].addEventListener('click', function () {
+            const isSelected = this.classList.contains('selected');
+            if (isSelected) {
+                this.classList.remove('selected');
+            } else {
+                this.classList.add('selected');
+            }
+        })
+    }
+
+    const closeToastButton = document.getElementById('closeButton');
+
+    if (closeToastButton) {
+        closeToastButton.addEventListener('click', function () {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('show');
+        })
+    }
+    
+    const shareButton = document.getElementById('shareButton');
+
+    if (shareButton) {
+        const baseUrl = location.protocol + '//' + location.host + location.pathname;
+        const elements = document.getElementsByClassName('row');
+        shareButton.addEventListener('click', function () {
+            let items = '';
+            for (let i = 0; i < elements.length; i++) {
+                if (elements[i].classList.contains('selected')) {
+                    items += i + ',';
+                }
+            }
+
+            copyToClipboard(baseUrl + '?items=' + items);
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+        })
+    }
+
 </script>
 </html>
